@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.samples.petclinic.oi.HearingInterpreter;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ActiveProfiles("yanny")
 @SpringJUnitConfig(classes = {HearingInterpreterActiveProfileTest.TestConfig.class})
 public class HearingInterpreterActiveProfileTest {
 
@@ -19,7 +21,7 @@ public class HearingInterpreterActiveProfileTest {
   void whatIHeard() {
     String word = hearingInterpreter.whatIHeard();
 
-    assertEquals("Laurel", word);
+    assertEquals("Yanny", word);
   }
 
   @Configuration
