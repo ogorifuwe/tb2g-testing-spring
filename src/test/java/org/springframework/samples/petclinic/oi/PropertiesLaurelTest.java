@@ -1,0 +1,32 @@
+package org.springframework.samples.petclinic.oi;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@TestPropertySource("classpath:laurel.properties")
+@ActiveProfiles("laurel-properties")
+@SpringJUnitConfig(classes = {PropertiesLaurelTest.TestConfig.class})
+class PropertiesLaurelTest {
+
+  @Autowired
+  private HearingInterpreter hearingInterpreter;
+
+  @Test
+  void whatIHeard() {
+    String word = hearingInterpreter.whatIHeard();
+
+    assertEquals("Laurel", word);
+  }
+
+  @Configuration
+  @ComponentScan("org.springframework.samples.petclinic.oi")
+  static class TestConfig {
+  }
+}
